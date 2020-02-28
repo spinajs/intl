@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "esModuleInterop": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "lib/",
+        "sourceMap": true,
+        "target": "es2017",
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "declaration": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "typeRoots": ["node_modules/@types", "./typings"]
+        
+    },
+    "include": [
+        "src/**/*","./typings/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}  

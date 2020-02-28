@@ -5,7 +5,7 @@ import { SpinaJsDefaultLog, LogModule } from "@spinajs/log";
 import * as _ from "lodash";
 import * as chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import { Intl, SpineJsInternationalizationFromJson } from "./../src";
+import { Intl, SpineJsInternationalizationFromJson } from "../src";
 
 
 const expect = chai.expect;

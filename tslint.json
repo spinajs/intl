@@ -26,6 +26,6 @@
     },
     "variable-name": {
       "severity": "off"
-    },
+    }
   }
 }

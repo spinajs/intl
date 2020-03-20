@@ -1,4 +1,4 @@
-import { IContainer, Injectable, ResolveStrategy, Autoinject, DI } from "@spinajs/di";
+import { IContainer, Injectable, SyncModule, Autoinject, DI } from "@spinajs/di";
 import { Configuration } from '@spinajs/configuration';
 import { Log, Logger } from "@spinajs/log";
 import { InvalidArgument } from "@spinajs/exceptions";
@@ -18,7 +18,7 @@ export interface IPhraseWithOptions {
     locale: string;
 }
 
-export abstract class Intl extends ResolveStrategy {
+export abstract class Intl extends SyncModule {
 
     /**
      * Currently selected locale

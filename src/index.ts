@@ -1,7 +1,7 @@
 import { IContainer, Injectable, ResolveStrategy, Autoinject, DI } from "@spinajs/di";
 import { Configuration } from '@spinajs/configuration';
 import { Log, Logger } from "@spinajs/log";
-import { ArgumentException } from "@spinajs/exceptions";
+import { InvalidArgument } from "@spinajs/exceptions";
 
 import * as fs from 'fs';
 import * as glob from 'glob';
@@ -88,7 +88,7 @@ export class SpineJsInternationalizationFromJson extends Intl {
     public set CurrentLocale(value: string) {
 
         if (!value) {
-            throw new ArgumentException("value cannot be empty or null");
+            throw new InvalidArgument("value cannot be empty or null");
         }
 
         this._currentLocale = value;

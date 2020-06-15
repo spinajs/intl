@@ -45,6 +45,7 @@ describe("Internationalization tests", () => {
     beforeEach(async () => {
         DI.register(ConnectionConf).as(Configuration);
         DI.register(SpinaJsDefaultLog).as(LogModule);
+        DI.register(SpineJsInternationalizationFromJson).as(Intl);
 
         DI.resolve(LogModule);
     });
@@ -62,7 +63,6 @@ describe("Internationalization tests", () => {
 
     it("Should load multiple json files", () => {
 
-        DI.register(SpineJsInternationalizationFromJson).as(Intl);
         const intl = DI.resolve<Intl>(Intl);
 
         expect(intl.Locales.has("en"));
@@ -89,28 +89,24 @@ describe("Internationalization tests", () => {
 
     it("should translate simple", () => {
 
-        DI.register(SpineJsInternationalizationFromJson).as(Intl);
         const intl = DI.resolve<Intl>(Intl);
 
         expect(intl.__("hello %s", "bemon")).to.eq("witaj bemon");
     })
 
     it("should translate with specified locale", () => {
-        DI.register(SpineJsInternationalizationFromJson).as(Intl);
         const intl = DI.resolve<Intl>(Intl);
 
         expect(intl.__({ phrase: "hello %s", locale: "en" }, "bemon")).to.eq("hello bemon");
     })
 
     it("should return original if not exists", () => {
-        DI.register(SpineJsInternationalizationFromJson).as(Intl);
         const intl = DI.resolve<Intl>(Intl);
 
         expect(intl.__("hello from other side")).to.eq("hello from other side");
     })
 
     it("should translate plural", () => {
-        DI.register(SpineJsInternationalizationFromJson).as(Intl);
         const intl = DI.resolve<Intl>(Intl);
 
         expect(intl.__n("%d cats", 3)).to.eq("3 koty");
@@ -122,7 +118,6 @@ describe("Internationalization tests", () => {
     })
 
     it("shoudl get avaible translations", () => {
-        DI.register(SpineJsInternationalizationFromJson).as(Intl);
         const intl = DI.resolve<Intl>(Intl);
         expect(intl.__l("hello")).to.be.an("array").with.length(2);
     })

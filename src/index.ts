@@ -288,7 +288,7 @@ export class SpineJsInternationalizationFromJson extends Intl {
  * @param locale { string } - selected locale, if not specified - default locale is selected
  */
 globalAny.__ = (text: string | IPhraseWithOptions, ...args: any[]) => {
-    return DI.get<Intl>('Internationalization').__(text, ...args);
+    return DI.get<Intl>(Intl).__(text, ...args);
 };
 
 /**
@@ -300,7 +300,7 @@ globalAny.__ = (text: string | IPhraseWithOptions, ...args: any[]) => {
  * @example use like `__n("%s cats", 1) returns `1 cat`
  */
 globalAny.__n = (text: string, count: number) => {
-    return DI.get<Intl>('Internationalization').__n(text, count);
+    return DI.get<Intl>(Intl).__n(text, count);
 };
 
 /**
@@ -309,7 +309,7 @@ globalAny.__n = (text: string, count: number) => {
  * @param text { string } - text to translate
  */
 globalAny.__l = (text: string) => {
-    return DI.get<Intl>('Internationalization').__l(text);
+    return DI.get<Intl>(Intl).__l(text);
 };
 
 /**
@@ -318,5 +318,5 @@ globalAny.__l = (text: string) => {
  * @param text { string } - text to translate
  */
 globalAny.__h = (text: string) => {
-    return DI.get<Intl>('Internationalization').__h(text);
+    return DI.get<Intl>(Intl).__h(text);
 };

@@ -1,6 +1,6 @@
 {
   "name": "@spinajs/intl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "spinajs internationalization api",
   "main": "lib/index.js",
   "scripts": {

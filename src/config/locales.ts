@@ -2,7 +2,7 @@
  * Localisation configuration, structure like in
  * https://github.com/mashpie/i18n-node
  */
-module.exports.locales = {
+module.exports.intl = {
     // supported locales
     locales: ['en', 'pl'],
   

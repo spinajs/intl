@@ -48,7 +48,7 @@ export abstract class Intl extends SyncModule {
      * @param count { number } - number of items/things
      * @example use like `__n("%s cats", 1) returns `1 cat`
      */
-    public abstract __n(text: string, count: number): string;
+    public abstract __n(text: string | IPhraseWithOptions, count: number): string;
 
     /**
      * Returns a list of translations for a given phrase in each language.
@@ -185,12 +185,25 @@ export class SpineJsInternationalizationFromJson extends Intl {
      * @param count { number } - number of items/things
      * @example use like `__n("%s cats", 1) returns `1 cat`
      */
-    public __n(text: string, count: number): string {
+    public __n(text: string | IPhraseWithOptions, count: number): string {
 
-        if (/%/.test(text) && this.Locales.has(this.CurrentLocale)) {
-            const locTable = this.Locales.get(this.CurrentLocale);
-            const phrase = locTable[text];
-            const pluralVerb = MakePlural[this.CurrentLocale](count);
+        let locTable;
+        let toLocalize;
+        let locale;
+
+        if (_.isString(text)) {
+            locale = this.CurrentLocale;
+            locTable = this.Locales.get(this.CurrentLocale);
+            toLocalize = text;
+        } else {
+            locale = text.locale ?? this.CurrentLocale;
+            locTable = this.Locales.get(text.locale) ?? this.Locales.get(this.CurrentLocale);
+            toLocalize = text.phrase;
+        }
+
+        if (/%/.test(toLocalize) && this.Locales.has(locale)) {
+            const phrase = locTable[toLocalize];
+            const pluralVerb = MakePlural[locale](count);
 
             if (phrase[pluralVerb]) {
                 return util.format(phrase[pluralVerb], count);
@@ -299,7 +312,7 @@ globalAny.__ = (text: string | IPhraseWithOptions, ...args: any[]) => {
  * @param count { number } - number of items/things
  * @example use like `__n("%s cats", 1) returns `1 cat`
  */
-globalAny.__n = (text: string, count: number) => {
+globalAny.__n = (text: string | IPhraseWithOptions, count: number) => {
     return DI.get<Intl>(Intl).__n(text, count);
 };
 

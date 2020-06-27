@@ -3,7 +3,6 @@
  * https://github.com/mashpie/i18n-node
  */
 module.exports.intl = {
-
   defaultLocale: 'pl',
 
   // supported locales

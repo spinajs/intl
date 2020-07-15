@@ -37,9 +37,9 @@
   "homepage": "https://github.com/spinajs/intl#readme",
   "dependencies": {
     "@spinajs/configuration": "^1.0.5",
-    "@spinajs/di": "^1.0.12",
+    "@spinajs/di": "^1.0.19",
     "@spinajs/exceptions": "^1.0.0",
-    "@spinajs/log": "^1.0.5",
+    "@spinajs/log": "^1.0.8",
     "@spinajs/reflection": "^1.0.4",
     "glob": "^7.1.6",
     "lodash": "^4.17.15",

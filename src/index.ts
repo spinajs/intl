@@ -154,6 +154,8 @@ export class SpineJsInternationalizationFromJson extends Intl {
     let locTable;
     let toLocalize;
 
+    if(!text) return "";
+
     if (_.isString(text)) {
       locTable = this.Locales.get(this.CurrentLocale);
       toLocalize = text;
@@ -181,6 +183,9 @@ export class SpineJsInternationalizationFromJson extends Intl {
     let locTable;
     let toLocalize;
     let locale;
+
+    if(!text) return "";
+
 
     if (_.isString(text)) {
       locale = this.CurrentLocale;
@@ -260,6 +265,9 @@ export class SpineJsInternationalizationFromJson extends Intl {
    * @param text { string } - text to translate
    */
   public __l(text: string): string[] {
+
+    if(!text) return [];
+
     const extract = _.property(text);
 
     return Array.from(this.Locales.values()).map(v => {
@@ -273,6 +281,9 @@ export class SpineJsInternationalizationFromJson extends Intl {
    * @param text { string } - text to translate
    */
   public __h(text: string): any[] {
+
+    if(!text) return [];
+
     const extract = _.property(text);
 
     return Array.from(this.Locales.values()).map((v, locale) => {
